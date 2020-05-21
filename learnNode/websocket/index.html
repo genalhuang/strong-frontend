@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="msglist"></div>
+    <textarea id="msg" rows="10" cols="40"></textarea>
+    <button id="btn">留言</button>
+    <script>
+        var $btn = document.querySelector("#btn");
+        var $msg = document.querySelector("#msg");
+        var $list = document.querySelector('#msglist');
+		//实例化websocket
+        var ws = new WebSocket("ws://localhost:3000");
+	
+        wsEvent();
+		//执行事件
+        function wsEvent() {
+            //收到服务端发来的数据 
+            ws.onmessage = (msg) => {
+                $list.innerHTML += msg.data + "</br>";
+            }
+            ws.onclose = () => {
+                //如果连接中断，重新连接
+                reconnect()
+            }
+            ws.onerror = () => {
+                //如果连接中断，重新连接
+                reconnect()
+            }
+        }
+        $btn.addEventListener("click", () => {
+        	//发送数据给服务端
+            ws.send($msg.value);
+        })
+
+        function reconnect() {
+        //重新连接
+            if (ws.readyState === 2 || ws.readyState === 3) {
+                ws = new WebSocket('ws://localhost:8099');
+                wsEvent();
+            }
+        }
+    </script>
+</body>
+</html>

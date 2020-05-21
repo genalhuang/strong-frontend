@@ -1,0 +1,17 @@
+{
+  "name": "learnnode",
+  "version": "1.0.0",
+  "description": "",
+  "main": "buffer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "curl": "^0.1.4",
+    "nodemon": "^2.0.2",
+    "shasum": "^1.0.2",
+    "ws": "^7.2.3"
+  }
+}

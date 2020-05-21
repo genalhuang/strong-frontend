@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+      .active {
+        border-color: red;
+        position: relative;
+        box-shadow: none;
+        width:40px;
+        height:40px;
+        margin:100px;
+        /* background-color: red; */
+      }
+        .active:before {
+          content: '';
+          display: block;
+          position: absolute;
+          right: -23px;
+          top: -24px;
+          width: 23px;
+          height: 50px;
+          border-right: 22px solid red;
+          border-top: 22px solid transparent;
+          border-bottom: 22px solid transparent;
+        }
+      
+  </style>
+</head>
+<body>
+  <div class='active'>
+
+  </div>
+</body>
+</html>
