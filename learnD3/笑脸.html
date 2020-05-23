@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+  <script>
+    var svg = d3.select('body')
+      .append('svg')
+      .attr('width', 960)
+      .attr('height', 500)
+
+
+    const height = svg.attr('height');
+    const width = svg.attr('width');
+    const eyeSpacing = 100;
+    const eyeYOffset = 70;
+
+    const circle = svg.append('circle')
+      .attr('r', height / 2)
+      .attr('cx', width / 2)
+      .attr('cy', height / 2)
+      .attr('fill', 'yellow')
+      .attr('stroke', 'black')
+
+    const eyeG = svg.append('g')
+    .attr('transfrom','translate(0,-70)')
+
+    const leftEye = eyeG.append('circle')
+      .attr('r', 30)
+      .attr('cx', width / 2 - eyeSpacing)
+      .attr('cy', height / 2 - eyeYOffset)
+      .attr('fill', 'black')
+
+    const rightEye = eyeG.append('circle')
+      .attr('r', 30)
+      .attr('cx', width / 2 + eyeSpacing)
+      .attr('cy', height / 2 - eyeYOffset)
+      .attr('fill', 'black')
+
+    const leftEyebrow = eyeG.append('rect')
+      .attr('x', 330)
+      .attr('y',100)
+      .attr("width", 100)
+      .attr("height", 20)
+
+    const rightEyebrow = eyeG.append('rect')
+      .attr('x', 530)
+      .attr('y',100)
+      .attr("width", 100)
+      .attr("height", 20)
+      .transition()
+      .duration(1000)
+      .attr('y',20)
+      .transition()
+      .duration(1000)
+      .attr('y',100)
+
+    circle.on('mouseover',function() {
+      alert('看个鸡')
+    })
+
+    const g = svg.append('g')
+      .attr('transform', `translate(${width / 2},${height / 2})`)
+
+    const arc = d3.svg.arc()
+    const mouth = g.append('path')
+      .attr('d', arc({
+        innerRadius: 150,
+        outerRadius: 170,
+        startAngle: Math.PI / 2,
+        endAngle: Math.PI * 1.5
+      }))
+      .transition()
+      .duration(1000)
+      .attr('y',20)
+
+
+  </script>
+</body>
+
+</html>
