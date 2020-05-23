@@ -63,21 +63,32 @@
 
     //添加矩形元素
     var rects = svg.selectAll(".MyRect")
-      .data(dataset)
-      .enter()
-      .append("rect")
-      .attr("class", "MyRect")
-      .attr("transform", "translate(" + padding.left + "," + padding.top + ")")
-      .attr("x", function (d, i) {
-        return xScale(i) + rectPadding / 2;
-      })
-      .attr("y", function (d) {
-        return yScale(d);
-      })
-      .attr("width", xScale.rangeBand() - rectPadding)
-      .attr("height", function (d) {
-        return height - padding.top - padding.bottom - yScale(d);
-      })
+        .data(dataset)
+        .enter()
+        .append("rect")
+        .attr("class","MyRect")   //把类里的 fill 属性清空
+        .attr("transform","translate(" + padding.left + "," + padding.top + ")")
+        .attr("x", function(d,i){
+            return xScale(i) + rectPadding/2;
+        } )
+        .attr("y",function(d){
+            return yScale(d);
+        })
+        .attr("width", xScale.rangeBand() - rectPadding )
+        .attr("height", function(d){
+            return height - padding.top - padding.bottom - yScale(d);
+        })
+        .attr("fill","steelblue")       //填充颜色不要写在CSS里
+        .on("mouseover",function(d,i){
+            d3.select(this)
+                .attr("fill","yellow");
+        })
+        .on("mouseout",function(d,i){
+            d3.select(this)
+                .transition()
+                .duration(500)
+                .attr("fill","steelblue");
+        });
       
 
     //添加文字元素
@@ -116,6 +127,42 @@
       .attr("transform", "translate(" + padding.left + "," + padding.top + ")")
       .call(yAxis);
 
+  </script>
+  <script>
+var quickSort = function(arr) {
+
+　　if (arr.length <= 1) { return arr; }
+
+　　var pivotIndex = Math.floor(arr.length / 2);
+
+　　var pivot = arr.splice(pivotIndex, 1)[0];
+
+　　var left = [];
+
+　　var right = [];
+
+　　for (var i = 0; i < arr.length; i++){
+
+　　　　if (arr[i] < pivot) {
+
+　　　　　　left.push(arr[i]);
+
+　　　　} else {
+
+　　　　　　right.push(arr[i]);
+
+　　　　}
+
+　　}
+
+　　return quickSort(left).concat([pivot], quickSort(right));
+
+};
+let arr = []
+for(i=0;i<1000;i++) {
+  arr.push(parseInt(Math.random()*10000))
+}
+console.log(quickSort(arr))
   </script>
 
 </body>

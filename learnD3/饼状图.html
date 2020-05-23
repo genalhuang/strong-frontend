@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+  <script>
+    var svg = d3.select('body')
+      .append('svg')
+      .attr('width', 1000)
+      .attr('height', 1000)
+    var dataset = [30, 10, 43, 55, 13];
+    var pie = d3.layout.pie()
+    var piedata = pie(dataset);
+    var color = d3.scale.category10()
+    var outerRadius = 100;
+    var innerRadius = 50;
+    var arc = d3.svg.arc()
+      .innerRadius(innerRadius)
+      .outerRadius(outerRadius)
+
+    var arcs = svg.selectAll('g')
+      .data(piedata)
+      .enter()
+      .append('g')
+      .attr('transfrom', 'translate(' + 100 / 2 + ',' + 100 / 2 + ')')
+
+    arcs.append('path')
+      .attr('fill', function (d, i) {
+        return color(i)
+      })
+      .attr('d', function (d) {
+        return arc(d)
+      })
+
+    arcs.append('text')
+      .attr('transfrom', function (d) {
+        return 'translate(' + arc.centroid(d) + ')'
+      })
+      .attr('text-anchor', 'middle')
+      .text(function (d) {
+        return d.data
+      })
+  </script>
+</body>
+
+</html>

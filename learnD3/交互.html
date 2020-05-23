@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+  <script>
+    // 创建svg
+    var svg = d3.select('body')
+      .append('svg')
+      .attr('width', 300)
+      .attr('height', 300)
+    var circle = svg.append("circle")
+      .attr("cx", 100)
+      .attr("cy", 100)
+      .attr("r", 45)
+      .style("fill", "pink");
+    circle.on("click", function () {
+      console.log('click')
+    });
+    circle.on("mouseover", function () {
+      console.log('mouseover')
+    });
+  </script>
+</body>
+
+</html>

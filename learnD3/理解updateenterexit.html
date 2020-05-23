@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+  <script>
+    var dataset = [3, 6, 9, 12, 15];
+
+    //选择body中的p元素
+    var p = d3.select("body").selectAll("p");
+
+    //获取update部分
+    var update = p.data(dataset);
+
+    //获取enter部分
+    var enter = update.enter();
+
+    //update部分的处理：更新属性值
+    update.text(function (d) {
+      return "update " + d;
+    });
+
+    //enter部分的处理：添加元素后赋予属性值
+    enter.append("p")
+      .text(function (d) {
+        return "enter " + d;
+      });
+  </script>
+</body>
+
+</html>
