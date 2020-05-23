@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+  <script>
+    // 创建svg
+    var svg = d3.select('body')
+      .append('svg')
+      .attr('width', 400)
+      .attr('height', 400)
+    var circle1 = svg.append("circle")
+      .attr("cx", 100)
+      .attr("cy", 100)
+      .attr("r", 45)
+      .style("fill", "pink");
+
+    //在1秒（1000毫秒）内将圆心坐标由100变为300
+    circle1.transition()
+      .duration(1000)
+      .attr("cx", 300)
+      .style('fill','cyan')
+      .attr("r", 25);
+
+
+      circle1.transition()
+      .delay(1000)
+      .duration(1000)
+      .attr("cx", 100)
+      .style('fill','pink')
+      .attr("r", 45);
+  </script>
+</body>
+
+</html>

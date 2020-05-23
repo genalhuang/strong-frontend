@@ -1,0 +1,39 @@
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>HelloWorld</title>
+</head>
+
+<body>
+  <p>Hello World 1</p>
+  <p>Hello World 2</p>
+  <div>adsf</div>
+
+  <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+  <script>
+    d3.select("body").selectAll("p").text("www.ourd3js.com");
+
+    var body = d3.select('body');
+    var p = body.select('p');
+    var str = '陈冠希'
+    p.datum(str);
+    p.text(function (d, i) {
+      return '第' + i + '个元素绑定的数据是' + d;
+    })
+
+    body.append("p")
+      .text("append p element");
+
+    body.insert("h1", "#myid")
+      .text("insert p element");
+      
+    setTimeout(() => {
+      var p = body.select("p");
+      p.remove();
+    })
+
+  </script>
+</body>
+
+</html>
