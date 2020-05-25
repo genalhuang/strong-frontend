@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    circle {
+      stroke-width: 5;
+      stroke: #f00;
+      fill: #ff0;
+    }
+
+    circle:hover {
+      stroke: #090;
+      fill: #fff;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- <svg width="300" height="180">
+    <circle cx="30"  cy="50" r="25" />
+    <circle cx="90"  cy="50" r="25" class="red" />
+    <circle cx="150" cy="50" r="25" class="fancy" />
+  </svg>
+   -->
+  <!-- <svg width="300" height="180">
+    <line x1="0" y1="0" x2="200" y2="0" style="stroke:rgb(0,0,0);stroke-width:5" />
+  </svg> -->
+
+  <!-- <svg width="300" height="180">
+    <polyline points="3,3 30,28 3,53" fill="none" stroke="black" />
+  </svg> -->
+
+  <!-- <svg width="300" height="180">
+    <ellipse cx="60" cy="60" ry="40" rx="20" stroke="black" stroke-width="5" fill="silver"/>
+  </svg> -->
+
+  <!-- <svg width="300" height="180">
+    <polygon fill="green" stroke="orange" stroke-width="1" points="0,0 150,0 100,100 0,100 0,0"/>
+  </svg> -->
+
+  <!-- <path>的d属性表示绘制顺序，它的值是一个长字符串，每个字母表示一个绘制动作，后面跟着坐标。
+
+    M：移动到（moveto）
+    L：画直线到（lineto）
+    Z：闭合路径 -->
+  <!-- <svg width="300" height="180">
+    <path d="
+      M 18,3
+      L 46,3
+      L 46,40
+      L 61,40
+      L 32,68
+      L 3,40
+      L 18,40
+      Z
+    "></path>
+    </svg> -->
+
+  <!-- <svg width="300" height="180">
+      <text x="50" y="25">Hello World</text>
+    </svg> -->
+
+  <!-- <svg viewBox="0 0 30 10" xmlns="http://www.w3.org/2000/svg">
+      <circle id="myCircle" cx="5" cy="5" r="4"/>
+    
+      <use href="#myCircle" x="10" y="0" fill="blue" />
+      <use href="#myCircle" x="20" y="0" fill="white" stroke="blue" />
+    </svg> -->
+
+
+  <!-- <svg width="300" height="100">
+      <g id="myCircle">
+        <text x="25" y="20">圆形</text>
+        <circle cx="50" cy="50" r="20"/>
+      </g>
+    
+      <use href="#myCircle" x="100" y="0" fill="blue" />
+      <use href="#myCircle" x="200" y="0" fill="white" stroke="blue" />
+    </svg> -->
+
+
+  <!-- <svg width="300" height="100">
+      <defs>
+        <g id="myCircle">
+          <text x="25" y="20">圆形</text>
+          <circle cx="50" cy="50" r="20"/>
+        </g>
+      </defs>
+    
+      <use href="#myCircle" x="0" y="0" />
+      <use href="#myCircle" x="100" y="0" fill="blue" />
+      <use href="#myCircle" x="200" y="0" fill="white" stroke="blue" />
+    </svg> -->
+
+  <!-- <svg width="500" height="500">
+      <defs>
+        <pattern id="dots" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
+          <circle fill="#bee9e8" cx="50" cy="50" r="35" />
+        </pattern>
+      </defs>
+      <rect x="0" y="0" width="100%" height="100%" fill="url(#dots)" />
+    </svg> -->
+
+  <!-- <svg viewBox="0 10 10 100" width="800" height="800">
+      <circle id="myCircle" cx="5" cy="5" r="4"/>
+      <image xlink:href="./test.png"
+        width="100%" height="100%"/>
+    </svg> -->
+
+  <!-- <svg width="500px" height="500px">
+    <rect x="0" y="0" width="100" height="100" fill="#feac5e">
+      <animate attributeName="x" from="100" to="500" dur="2s" repeatCount="indefinite" />
+      <animate attributeName="width" to="00" dur="2s" repeatCount="indefinite" />
+    </rect>
+  </svg> -->
+
+  <!-- <svg width="500px" height="500px">
+    <rect x="250" y="250" width="50" height="50" fill="#4bc0c8">
+      <animateTransform attributeName="transform" type="rotate" begin="0s" dur="10s" from="0 200 200" to="360 400 400" repeatCount="indefinite" />
+    </rect>
+  </svg> -->
+
+  <!-- <svg id="mysvg" 
+  xmlns="http://www.w3.org/2000/svg" 
+  viewBox="0 0 800 600"
+  preserveAspectRatio="xMidYMid meet">
+    <circle id="mycircle" cx="400" cy="300" r="50" />
+  </svg>
+  <script>
+    var mycircle = document.getElementById('mycircle');
+    let round = 10
+    mycircle.addEventListener('click', function(e) {
+      console.log('circle clicked - enlarging');
+      mycircle.setAttribute('r', 50 + round);
+    }, false);
+  </script> -->
+
+  <!-- <script>
+  var svgObject = document.getElementById('object').contentDocument;
+  var svgIframe = document.getElementById('iframe').contentDocument;
+  var svgEmbed = document.getElementById('embed').getSVGDocument();
+  </script> -->
+
+  <!-- <div id="svg-container">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+      xml:space="preserve" width="500" height="440"
+    >
+    </svg>
+  </div>
+  <script>
+    var svgString = new XMLSerializer()
+    .serializeToString(document.querySelector('svg'));
+    console.log(svgString)
+    var img = new Image();
+    var svg = new Blob([svgString], {type: "image/svg+xml;charset=utf-8"});
+
+    var DOMURL = self.URL || self.webkitURL || self;
+    var url = DOMURL.createObjectURL(svg);
+    img.src = url;
+    img.onload = function () {
+      var canvas = document.getElementById('canvas');
+      var ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0);
+    };
+  </script> -->
+
+  <!-- <svg width="350" height="160">
+    <g class="layer" transform="translate(60,10)">
+      <circle r="5" cx="0"   cy="105" />
+      <circle r="5" cx="90"  cy="90"  />
+      <circle r="5" cx="180" cy="60"  />
+      <circle r="5" cx="270" cy="0"   />
+  
+      <g class="y axis">
+        <line x1="0" y1="0" x2="0" y2="120" />
+        <text x="-40" y="105" dy="5">$10</text>
+        <text x="-40" y="0"   dy="5">$80</text>
+      </g>
+
+      <g class="x axis" transform="translate(0, 120)">
+        <line x1="0" y1="0" x2="270" y2="0"/>
+        <text x="-30"   y="20">January 2014</text>
+        <text x="240" y="20">April</text>
+      </g>
+    </g>
+  </svg> -->
+</body>
+
+</html>
