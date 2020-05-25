@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id='app'>
+    <p>{{name}}</p>
+    <p v-text='name'></p>
+    <p>{{age}}</p>
+    <p>{{doubleAge}}</p>
+    <input type="text" v-model="name">
+    <button @click='changeName'>呵呵</button>
+    <button v-html="name"></button>
+  </div>
+  <script src='./compile.js'></script>
+  <script src='./vue.js'></script>
+  <script>
+    const app = new vue({
+      el: '#app',
+      data: {
+        // foo: 'foo',
+        // bar: {
+        //   mua: 'mua'
+        // }
+        name: '陈冠希',
+        age: 30,
+        doubleAge: 18,
+      },
+      created() {
+        console.log('开始啦')
+        setTimeout(() => {
+          this.name = '我更新了！！！'
+        }, 1500)
+        setTimeout(() => {
+          this.age = '300'
+        }, 3000)
+      }
+    })
+    app.foo = 'adsf';
+  </script>
+</body>
+</html>
