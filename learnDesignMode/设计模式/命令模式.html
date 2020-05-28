@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <button id='button1'>刷新菜单</button>
+  <button id='button2'>增加子菜单</button>
+  <script>
+    // 传统语言实现 不好
+    var setCommend = function (button, command) {
+      button.onclick = function () {
+        command.excude()
+      }
+    }
+
+    var MenuBar = {
+      refresh: function () {
+        console.log('刷新菜单')
+      }
+    }
+
+    var SubMenu = {
+      add: function () {
+        console.log('增加子菜单')
+      },
+      del: function () {
+        console.log('删除子菜单')
+      }
+    }
+
+    var RefreshMenuBarCommand = function (receiver) {
+      this.receiver = receiver
+    }
+
+    RefreshMenuBarCommand.prototype.excude = function () {
+      this.receiver.refresh()
+    }
+
+    var AddSubMenuCommand = function (receiver) {
+      this.receiver = receiver
+    }
+
+    AddSubMenuCommand.prototype.excude = function () {
+      this.receiver.add()
+    }
+
+    var refreahMenuBarCommand = new RefreshMenuBarCommand(MenuBar)
+    var addSubMenuCommand = new AddSubMenuCommand(SubMenu)
+
+    setCommend(document.getElementById('button1'), refreahMenuBarCommand)
+    setCommend(document.getElementById('button2'), addSubMenuCommand)
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button id='count'>点我</button>
+  <div id='show'></div>
+  <script>
+    // 全局的发布订阅模式
+    var Event = (function(){
+      var clientList= {};
+      var listen = function (key, fn) {
+        if (!clientList[key]) {
+          clientList[key] = []
+        }
+        clientList[key].push(fn);
+      }
+      var trigger = function () {
+        var key = Array.prototype.shift.call(arguments);
+        var fns = clientList[key]
+        if (!fns || fns.listen === 0) {
+          return false;
+        }
+
+        for (var i = 0; i < fns.length; i++) {
+          var fn = fns[i];
+          fn.apply(this, arguments);
+        }
+      }
+      var remove = function (key, fn) {
+        var fns = clientList[key];
+        if (!fns) {
+          console.log('你本来就没监听这个房子')
+          return
+        }
+        if (!fn) {
+          fns && (fns.length = 0)
+        } else {
+          for (var l = fns.length - 1; l >= 0; l--) {
+            var _fn = fns[l]
+            if (_fn === fn) {
+              fns.splice(l, 1)
+            }
+          }
+        }
+      }
+
+      return {
+        listen,
+        trigger,
+        remove
+      }
+    })()
+
+    var a = (function() {
+      var count = 0;
+      var button = document.getElementById('count')
+      button.onclick = function() {
+        Event.trigger('add', count++)
+      }
+    })()
+    var b = (function() {
+      var div = document.getElementById('show')
+      Event.listen('add',function(count) {
+        div.innerHTML = count
+      })
+    })()
+  </script>
+</body>
+</html>
