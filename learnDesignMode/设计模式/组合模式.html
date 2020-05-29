@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button id='button'>运行指令</button>
+
+  <script>
+    var MacroCommand = function() {
+      // 创建一个宏命令对象
+      return {
+        commandsList: [],
+        add: function(command) {
+          this.commandsList.push(command)
+        },
+        execute: function() {
+          for(var i=0;i<this.commandsList.length;i++) {
+            let command = this.commandsList[i]
+            command.execute()
+          }
+        }
+      }
+    }
+
+    var ACommand = {
+      execute() {
+        console.log('打开空调')
+      }
+    }
+
+    var openTvCommand = {
+      execute() {
+        console.log('打开电视')
+      }
+    }
+    var openSoundCommand = {
+      execute() {
+        console.log('打开音响')
+      }
+    }
+    var BCommand = MacroCommand()
+    BCommand.add(openTvCommand)
+    BCommand.add(openSoundCommand)
+
+    // 通过组合模式组织
+    var macroCommand = MacroCommand()
+    macroCommand.add(ACommand)
+    macroCommand.add(BCommand)
+
+    // 绑定事件
+    var setCommand = (function(command) {
+      document.getElementById('button').onclick = function() {
+        command.execute()
+      }
+    })(macroCommand)
+  </script>
+</body>
+</html>
