@@ -1,0 +1,151 @@
+<!-- // 普通版代码
+  选择颜色: <select id="colorSelect">
+    <option value="">请选择</option>
+    <option value="red">蓝色</option>
+    <option value="blue">红色</option>
+  </select>
+  <br>
+  输入购买数量：<input type="text" id='numberInput'>
+  <br>
+  您选择了颜色：<div id='colorInfo'></div>
+  <br>
+  您选择了数量：<div id='numberInfo'></div>
+  <button id='nextBtn' disabled='true'>请选择手机颜色和购买数量</button>
+
+  <script>
+    var colorSelect = document.getElementById('colorSelect')
+    var numberInput = document.getElementById('numberInput')
+
+    var colorInfo = document.getElementById('colorInfo')
+    var numberInfo = document.getElementById('numberInfo')
+    var nextBtn = document.getElementById('nextBtn')
+
+    var goods = {
+      red: 3,
+      blue: 6
+    }
+
+    colorSelect.onchange =  function() {
+      var color = this.value;
+      var number = parseInt(numberInput.value)
+      console.log(number)
+      var stock = goods[color]
+      colorInfo.innerHTML = color;
+      if(!color) {
+        nextBtn.disabled =true;
+        nextBtn.innerHTML = '请选择手机颜色'
+        return
+      }
+      if(isNaN(number) || number < 0) {
+        nextBtn.disabled = true;
+        nextBtn.innerHTML = '请数据正确的购买数量'
+        return
+      }
+      if(number > stock) {
+        nextBtn.disabled = true;
+        nextBtn.innerHTML = '库存不足'
+        return
+      }
+      nextBtn.disabled = false;
+      nextBtn.innerHTML = '放入购物车'
+    }
+-->
+
+<!-- 引入中介者模式 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  请选择颜色：
+  <select id="colorSelect">
+    <option value="">请选择</option>
+    <option value="red">红色</option>
+    <option value="blue">蓝色</option>
+  </select><br />
+  选择内存:
+  <select id="memorySelect">
+    <option value="">请选择</option>
+    <option value="64G">64G</option>
+    <option value="128G">128G</option>
+  </select><br />
+  输入购买数量 <input type="text" id='numberInput'><br />
+
+  你选择了颜色：<div id='colorInfo'></div><br />
+  你选择了内存：<div id='memoryInfo'></div><br />
+  你选择了数量：<div id='numberInfo'></div><br />
+
+  <button id='nextBtn' disabled='true'>请选择手机颜色和购买数量</button>
+
+  <script>
+    var goods = {
+      'red|64G': 3,
+      'red|128G': 3,
+      'blue|64G': 3,
+      'blue|128G': 3,
+    }
+
+    var mediator = (function () {
+      var colorSelect = document.getElementById('colorSelect')
+      var numberInput = document.getElementById('numberInput')
+      var memorySelect = document.getElementById('memorySelect')
+      var colorInfo = document.getElementById('colorInfo')
+      var numberInfo = document.getElementById('numberInfo')
+      var memoryInfo = document.getElementById('memoryInfo')
+      var nextBtn = document.getElementById('nextBtn')
+
+      return {
+        changed: function (obj) {
+          var color = colorSelect.value
+          var memory = memorySelect.value
+          var number = parseInt(numberInput.value)
+          stock = goods[color + '|' + memory]
+
+          if (obj === colorSelect) {
+            colorInfo.innerHTML = color;
+          }else if(obj === memorySelect) {
+            memoryInfo.innerHTML =  memory;
+          } else if(obj === numberInput) {
+            numberInfo.innerHTML =  number;
+          }
+          console.log(this.color,nextBtn)
+          if(!color) {
+            nextBtn.disabled = true;
+            nextBtn.innerHTML = '请选择手机颜色'
+            return;
+          }
+          if(!memory) {
+            nextBtn.disabled = true;
+            nextBtn.innerHTML = '请选择手机内存'
+            return
+          }
+          if(isNaN(number) || number < 0) {
+            nextBtn.disabled = true;
+            nextBtn.innerHTML = '请选择手机数量'
+            return
+          }
+
+          nextBtn.disabled = false;
+          nextBtn.innerHTML = '放入购物车'
+        }
+      }
+    })()
+
+    colorSelect.onchange = function() {
+      mediator.changed(this)
+    }
+    memorySelect.onchange = function() {
+      mediator.changed(this)
+    }
+    numberInput.onchange = function() {
+      mediator.changed(this)
+    }
+  </script>
+</body>
+
+</html>
