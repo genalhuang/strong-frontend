@@ -108,23 +108,23 @@
 
           if (obj === colorSelect) {
             colorInfo.innerHTML = color;
-          }else if(obj === memorySelect) {
-            memoryInfo.innerHTML =  memory;
-          } else if(obj === numberInput) {
-            numberInfo.innerHTML =  number;
+          } else if (obj === memorySelect) {
+            memoryInfo.innerHTML = memory;
+          } else if (obj === numberInput) {
+            numberInfo.innerHTML = number;
           }
-          console.log(this.color,nextBtn)
-          if(!color) {
+          console.log(this.color, nextBtn)
+          if (!color) {
             nextBtn.disabled = true;
             nextBtn.innerHTML = '请选择手机颜色'
             return;
           }
-          if(!memory) {
+          if (!memory) {
             nextBtn.disabled = true;
             nextBtn.innerHTML = '请选择手机内存'
             return
           }
-          if(isNaN(number) || number < 0) {
+          if (isNaN(number) || number < 0) {
             nextBtn.disabled = true;
             nextBtn.innerHTML = '请选择手机数量'
             return
@@ -136,13 +136,13 @@
       }
     })()
 
-    colorSelect.onchange = function() {
+    colorSelect.onchange = function () {
       mediator.changed(this)
     }
-    memorySelect.onchange = function() {
+    memorySelect.onchange = function () {
       mediator.changed(this)
     }
-    numberInput.onchange = function() {
+    numberInput.onchange = function () {
       mediator.changed(this)
     }
   </script>
