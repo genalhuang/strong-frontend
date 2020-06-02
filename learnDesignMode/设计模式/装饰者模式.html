@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  用户名:<input type="text" id='username' /><br>
+  密码: <input type="text" id='password' /><br>
+  <input type="button" id='submitBtn' value='提交'>
+
+  <script>
+    var username = document.getElementById('username')
+    var password = document.getElementById('password')
+    var submitBtn = document.getElementById('submitBtn')
+
+    var checkFn = function () {
+      if (!username.value) {
+        return false
+      }
+      if (!password.value) {
+        return false
+      }
+    }
+
+    Function.prototype.before = function (beforeFn) {
+      var self = this;
+      return function () {
+        if (beforeFn.apply(this, arguments) === false) {
+          console.log('校验不通过')
+          return false
+        }
+        return self.apply(this, arguments)
+      }
+    }
+
+    var formSubmit = function () {
+      var param = {
+        username: username.value,
+        password: password.value
+      }
+      console.log('发送请求：' + param.username, + param.password)
+    }
+
+    formSubmit = formSubmit.before(checkFn)
+    
+    submitBtn.onclick = function(){
+      formSubmit()
+    }
+  </script>
+</body>
+
+</html>
