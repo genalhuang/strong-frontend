@@ -79,7 +79,7 @@ function bfs(node) {
         arr.push(...item.children)
       }
     })
-    console.log(arr)
+    console.log(arr);
   }
 }
 
