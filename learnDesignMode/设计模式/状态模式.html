@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+
+  <script>
+    // 普通写法 不利于扩展
+    // var Light = function() {
+    //   this.state = 'off';
+    //   this.button = null;
+    // }
+    // Light.prototype.init = function() {
+    //   var button = document.createElement('button');
+    //   var self = this;
+    //   this.button = document.body.appendChild(button)
+    //   button.innerHTML = '开关';
+
+    //   this.button.onclick = function() {
+    //     self.buttonWasPressed()
+    //   }
+    // }
+    // Light.prototype.buttonWasPressed = function() {
+    //   if(this.state === 'off') {
+    //     console.log('开灯');
+    //     this.button.innerHTML = '开灯'
+    //     this.state = 'open';
+    //   } else {
+    //     console.log('关灯');
+    //     this.button.innerHTML = '关灯'
+    //     this.state = 'off';
+    //   }
+    // }
+
+    // var light = new Light();
+    // light.init()
+
+
+    // var OffLightState = function(light) {
+    //   this.light = light
+    // }
+    // OffLightState.prototype.buttonWasPressed = function() {
+    //   console.log('弱光')
+    //   this.light.button.innerHTML = '弱光'
+    //   this.light.setState(this.light.weakLightState);
+    // }
+    // var WeakLightState = function(light) {
+    //   this.light = light
+    // }
+    // WeakLightState.prototype.buttonWasPressed = function() {
+    //   console.log('强光')
+    //   this.light.button.innerHTML = '强光'
+    //   this.light.setState(this.light.strongLightState);
+    // }
+    // var StrongLightState = function(light) {
+    //   this.light = light
+    // }
+    // StrongLightState.prototype.buttonWasPressed = function() {
+    //   console.log('关灯')
+    //   this.light.button.innerHTML = '关灯'
+    //   this.light.setState(this.light.offLightState);
+    // }
+
+    // var Light = function() {
+    //   this.offLightState = new OffLightState(this);
+    //   this.weakLightState = new WeakLightState(this);
+    //   this.strongLightState = new StrongLightState(this)
+    //   this.button = null;
+    //   this.currState = null;
+    // }
+    // Light.prototype.init = function() {
+    //   var button = document.createElement('button');
+    //   var self = this;
+    //   this.button = document.body.appendChild(button);
+    //   this.button.innerHTML = "开关";
+    //   this.currState = this.offLightState
+    //   this.button.onclick = function() {
+    //     self.currState.buttonWasPressed();
+    //   }
+    // }
+    // Light.prototype.setState = function(newState) {
+    //   this.currState = newState;
+    // }
+
+    // var light = new Light();
+    // light.init()
+
+
+    // 状态模式之闭包 实现一个开关灯例子
+    var delegate = function (client, delegation) {
+      return {
+        buttonWasPressed: function () {
+          return delegation.buttonWasPressed.apply(client, arguments);
+        }
+      }
+    }
+
+    var FSM = {
+      off: {
+        buttonWasPressed: function () {
+          console.log('关灯');
+          this.button.innerHTML = "下一次开灯"
+          this.currState = this.onState;
+        }
+      },
+      on: {
+        buttonWasPressed: function () {
+          console.log('开灯')
+          this.button.innerHTML = '下一次关灯'
+          this.currState = this.offState;
+        }
+      }
+    }
+
+    var Light = function () {
+      this.offState = delegate(this, FSM.off);
+      this.onState = delegate(this, FSM.on);
+      this.currState = this.offState;
+      this.button = null;
+    }
+    Light.prototype.init = function () {
+      var button = document.createElement('button');
+      var self = this;
+      this.button = document.body.appendChild(button);
+      this.button.innerHTML = "已关灯";
+      this.button.onclick = function () {
+        self.currState.buttonWasPressed();
+      }
+    }
+
+    var light = new Light()
+    light.init()
+  </script>
+</body>
+
+</html>
