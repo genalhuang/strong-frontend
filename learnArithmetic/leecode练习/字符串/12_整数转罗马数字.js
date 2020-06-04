@@ -94,7 +94,7 @@ function zidian(num) {
 console.log(intToRoman(5000))
 
 
-// 真实玩法
+// 万位内快速玩法 不够扩展性
 var intToRoman = function (num) {
   var Q = ["", "M", "MM", "MMM"];
   var B = ["", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"];
@@ -103,7 +103,7 @@ var intToRoman = function (num) {
   return Q[Math.floor(num / 1000)] + B[Math.floor((num % 1000) / 100)] + S[Math.floor((num % 100) / 10)] + G[num % 10];
 };
 
-// JS代码 贪心算法
+//贪心算法
 var intToRoman = function (num) {
   var romanArr = ['M', 'CM', 'D', 'CD', 'C', 'XC', 'L', 'XL', 'X', 'IX', 'V', 'IV', 'I']
   var arr = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1]
