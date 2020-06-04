@@ -72,6 +72,7 @@ const data = [
 function bfs(node) {
   let arr = node
   while (arr.length > 0) {
+    debugger
     [...arr].forEach(item => {
       console.log(item.name, 111)
       arr.shift()

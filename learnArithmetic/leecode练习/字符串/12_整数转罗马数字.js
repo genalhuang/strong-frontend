@@ -103,4 +103,21 @@ var intToRoman = function(num) {
   return Q[Math.floor(num/1000)] + B[Math.floor((num%1000)/100)] + S[Math.floor((num%100)/10)] + G[num%10];
 };
 
+// JS代码 贪心算法
+var intToRoman = function(num) {
+    var romanArr = ['M', 'CM', 'D', 'CD', 'C', 'XC', 'L', 'XL', 'X', 'IX', 'V', 'IV', 'I']
+    var arr = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1]
+    var str = ''
+
+    for (var i = 0; i < 13;) {
+        if (num >= arr[i]) {
+            num -= arr[i]
+            str += romanArr[i]
+        } else {
+            i++
+        }
+    }
+    return str
+};
+
 console.log(intToRoman(500))
