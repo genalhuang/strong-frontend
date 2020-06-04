@@ -5,10 +5,10 @@
 var intToRoman = function (num) {
   let s = num.toString()
   let sum = ''
-  let arr = [1,10,100,1000,10000,100000]
-  for(var i=0;i<s.length;i++) {
-    if(s[i] != 0) {
-      sum += zidian(s[i] * arr[s.length-1-i])
+  let arr = [1, 10, 100, 1000, 10000, 100000]
+  for (var i = 0; i < s.length; i++) {
+    if (s[i] != 0) {
+      sum += zidian(s[i] * arr[s.length - 1 - i])
     }
 
   }
@@ -95,29 +95,29 @@ console.log(intToRoman(5000))
 
 
 // 真实玩法
-var intToRoman = function(num) {
+var intToRoman = function (num) {
   var Q = ["", "M", "MM", "MMM"];
   var B = ["", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"];
   var S = ["", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"];
   var G = ["", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"];
-  return Q[Math.floor(num/1000)] + B[Math.floor((num%1000)/100)] + S[Math.floor((num%100)/10)] + G[num%10];
+  return Q[Math.floor(num / 1000)] + B[Math.floor((num % 1000) / 100)] + S[Math.floor((num % 100) / 10)] + G[num % 10];
 };
 
 // JS代码 贪心算法
-var intToRoman = function(num) {
-    var romanArr = ['M', 'CM', 'D', 'CD', 'C', 'XC', 'L', 'XL', 'X', 'IX', 'V', 'IV', 'I']
-    var arr = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1]
-    var str = ''
+var intToRoman = function (num) {
+  var romanArr = ['M', 'CM', 'D', 'CD', 'C', 'XC', 'L', 'XL', 'X', 'IX', 'V', 'IV', 'I']
+  var arr = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1]
+  var str = ''
 
-    for (var i = 0; i < 13;) {
-        if (num >= arr[i]) {
-            num -= arr[i]
-            str += romanArr[i]
-        } else {
-            i++
-        }
+  for (var i = 0; i < 13;) {
+    if (num >= arr[i]) {
+      num -= arr[i]
+      str += romanArr[i]
+    } else {
+      i++
     }
-    return str
+  }
+  return str
 };
 
 console.log(intToRoman(500))
