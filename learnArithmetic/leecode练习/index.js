@@ -1,27 +1,34 @@
-
-var letterCombinations = function(ms) {
-  const H = '时';
-  const M = '分';
-  const S = '秒';
-  let hour = parseInt((ms % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  let standardHour = hour + 8;
-  if (standardHour > 24) hour = hour % 24;
-  let minutes = parseInt((ms % (1000 * 60 * 60)) / (1000 * 60));
-  let seconds = parseInt((ms % (1000 * 60)) / 1000);
-
-  let min = minutes < 10 ? `0${minutes}` : minutes;
-  let h = hour < 10 ? `0${hour}` : hour;
-  let s = seconds < 10 ? `0${seconds}` : seconds;
-
-  return {
-    time: `${standardHour}:${min}`,
-    desc: hour > 0 ? `${hour}${H}${minutes}${M}${seconds}${S}` : `${minutes}${M}${seconds}${S}`,
-    desc2: hour > 0 ? `${h}:${min}:${s}` : `${min}:${s}`,
-    hour: hour,
-    minutes: minutes,
-    seconds: seconds,
-  };
-  
+/**
+ * @param {string[]} strs
+ * @return {string}
+ */
+var longestCommonPrefix = function(strs) {
+  let arr = strs.sort((a,b)=>a.length-b.length)
+  if(!strs.length) {
+    return ''
+  }
+  let str = arr[0]  
+  for(var i=0;i<=str.length;i++) {
+    for(var j=str.length;j>i;j--) {
+      let a = str.slice(i,j)
+      if(judge(a)){
+        if(str === a && strs.length>2) {
+          return ''
+        }
+        return a
+      }
+    }
+  }
+  function judge(str) {
+    let flag = true;
+    for(var i=0;i<strs.length;i++) {
+      if(strs[i].indexOf(str)===-1) {
+        flag = false;
+      }
+    }
+    return flag
+  }
+  return ''
 };
 
-console.log(letterCombinations(2399792))
+console.log(longestCommonPrefix(["dog","racecar","car"]))
