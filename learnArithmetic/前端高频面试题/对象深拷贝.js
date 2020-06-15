@@ -1,24 +1,16 @@
 // 垃圾简单版
 var data = {
-  val: 99,
+  val: [1,2,4,5],
   left:  {
-    val: 12,
+    val: 2,
     left: null,
-    right:   { 
-      val: 13, 
-      left: null, 
-      right: {
-        val: 52,
-        left: {
-          val: 29,
-          left: null,
-          right: null
-        },
-        right: null
-      } 
+    rigth: {
+      val: 3
     }
   },
-  right:  [1,3,4,5,56]
+  right:  function () {
+    console.log(a)
+  }
 }
 
 function deepMerge(data) {
@@ -27,15 +19,15 @@ function deepMerge(data) {
   }
   let mydata = {}
   for(var key in data) {
-    if(typeof key === 'string') {
-      mydata[key] = data[key]
-    } else if(Object.prototype.toString.call(key) === '[object Array]') {
+    if(Object.prototype.toString.call(data[key]) === '[object Array]') {
       mydata[key] = []
       for(var item of data[key]) {
         mydata[key].push(item)
       }
-    } else if(Object.prototype.toString.call(key) === '[object Object]') {
-      deepMerge(data[key])
+    } else if(Object.prototype.toString.call(data[key]) === '[object Object]') {
+      mydata[key] = deepMerge(data[key])
+    } else {
+      mydata[key] = data[key]
     }
   }
   return mydata
