@@ -1,22 +1,25 @@
 /**
- * @param {number} candies
- * @param {number} num_people
- * @return {number[]}
+ * @param {number[]} nums
+ * @return {void} Do not return anything, modify nums in-place instead.
  */
-var distributeCandies = function(candies, num_people) {
-  let arr = new Array(num_people).fill(0)
-  let jiechen=0;
-  let index = 0;
-  let shengyu = 0;
-  while(candies >= 0) {
-    candies -= ++index
-    jiechen++
+var wiggleSort = function(nums) {
+  arr= nums.sort()
+  let middle = parseInt(arr.length/2)
+  if(arr.length%2 != 0) {
+    for(var i=1;i<arr.length-1;i++) {
+      let temp = arr[middle+1]
+      let a = arr.splice(0,1)[0]
+      arr[middle+1] =  a
+      arr[middle+2]=temp
+    }
+  } else {
+    for(var i=0;i<arr.length-1;i++) {
+      let temp = arr[middle]
+      arr[middle] = arr[i+1]
+      arr[i+1] = temp
+    }
   }
-  shengyu = jiechen + candies
-  for(var i=0;i<jiechen-1;i++) {
-    arr[i%num_people] += i+1
-  }
-  arr[(jiechen-1)%num_people] += shengyu
+  return arr
 };
 
-console.log(distributeCandies(3,4))
+console.log(wiggleSort([1,1,2,1,2,2,1]))
