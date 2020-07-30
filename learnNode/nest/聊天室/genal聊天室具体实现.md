@@ -13,7 +13,7 @@
 - 表情包
 - 消息分页
 
-### 所用技术
+### 技术概览
 ```
 前端: vue + vue-router + vuex + typescript + socket.io + antd
 
