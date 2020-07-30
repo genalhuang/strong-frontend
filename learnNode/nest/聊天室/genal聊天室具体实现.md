@@ -21,7 +21,7 @@
 ```
 
 ### 数据库表结构设计
-数据库使用了六张表,分别是user用户表, group群表, user_group用户_群中间表,group_message群消息表,user_friend用户_好友中间表, friend_message私聊消息表.
+数据库使用了六张表,分别是user用户表, group群表, user_group用户_群中间表,group_message群消息表,user_friend用户_好友中间表, friend_message私聊消息表.<br>
 其中中间表用于建立对于群/好友与用户之间的联系.下面是我画的思维导图,相信大家看完就能理解其中的奥妙啦.
 ![](./database.png)
 
