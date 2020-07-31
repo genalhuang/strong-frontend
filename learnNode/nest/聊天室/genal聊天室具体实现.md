@@ -89,7 +89,7 @@ app.useStaticAssets(join(__dirname, '../public/', 'static'), {
   prefix: '/static/', 
 });
 ```
-4. nestjs还能自定义异常过滤器
+4. nestjs自定义异常过滤器
 ```js
 // http-exception.filter.ts
 @Catch(HttpException)
