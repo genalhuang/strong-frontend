@@ -40,16 +40,21 @@
 
 ### WebSocket的建立逻辑
 #### 用户房间的建立
-每个用户进入聊天室都会自动加入public聊天组，并且每个用户都会进入由用户id为名字的 WebSocket 房间，那么做是为了单独广播给某个用户从而进行一些操作。如果不了解房间的概念，可以认为只有房间内的人才能接收到房间的广播，更多信息请移步socket.io官网。
+每个用户进入聊天室都会自动加入名为 public 的 WebSocket 房间和以用户 id 为命名的 WebSocket 房间，那么做是为了方便单独广播事件。如果不了解房间的概念，可以认为只有房间内的人才能接收到房间内的广播，更多信息请移步socket.io官网。
 
 #### 群聊房间的建立
-以groupId作为WebSocket房间的名字，每次有新用户加入群都会在群房间内广播用户进群事件，然后其他用户会存储新用户的信息。当新用户发消息的时候，可以通过消息的userId找到对应用户的详细信息，这样能保障消息发送的速度.
+以 groupId 作为 WebSocket 房间的名字，每次有新用户加入群都会在群房间内广播用户进群事件并附带上新用户的详细信息，然后其他用户会存储新用户的信息。当新用户发消息的时候，可以通过消息的userId找到对应用户的详细信息。这样能保证消息发出后其他用户能够快速知道消息的主人.
 
 #### 私聊房间的建立
-每当发起一个添加好友的请求，就会把用户userId和好友的userId拼接成一个字符串作为WebSocket的房间名，从而建立私聊房间。
+每当发起一个添加好友的请求，就会把用户的userId和好友的userId拼接成的字符串作为WebSocket的房间名，从而建立私聊房间。
 
 ### 后端架构
-后端使用了nestjs这个近几年发展迅猛的node.js框架，不仅仅是因为其使用typescript进行开发，nestjs的依赖注入以及模块化的思想，使得代码结构清晰，便于维护。同时nestjs的@nestjs/websockets包也已经封装好了对于WebSocket事件的处理。下面是一些后端的逻辑代码。
+后端使用了 nestjs 这个近几年发展迅猛的node.js框架。nestjs 的优势有很多， 我只列举出以下几点：
+1. 基于 TypeScript 构建，同时兼容普通的 ES6。
+2. nestjs 的依赖注入以及模块化的思想，使得代码结构清晰，便于维护。
+3. nestjs 的 @nestjs/websockets 包封装好了对于 WebSocket 事件的处理，对于开发聊天室有优势。
+ 
+下面是一些后端的逻辑代码。
 1. 使用nestjs建立WebSocket连接
 ```js
 // chat.gateway.ts
@@ -118,7 +123,7 @@ export class HttpExceptionFilter implements ExceptionFilter<HttpException> {
 
 ### 前端架构
 #### 页面初始化
-初始化会调起WebSocket连接函数，然后拿到用户所有的群信息GroupArr和所有的好友信息FriendArr，再通过建立WebSocket房间的规则加入到对应的房间，然后使用vuex派发最新的数据。
+初始化会调起 WebSocket 连接函数，然后拿到用户所有的群信息和所有的好友信息，再通过建立 WebSocket 通信的规则加入到对应的房间，然后使用 vuex 派发最新的数据。
 #### 数据处理
 群的数据类型
 ```js
@@ -145,8 +150,8 @@ interface Friend {
   createTime: number;
 }
 ```
-我曾经用对象数组 [ Friends1 , friend2 ] 这样的结构去管理所有的群和所有的好友数据，但是稍微动一下脑筋就知道，这样的结构非常不利于查询/更新。每次用户的好友名字变了或者头像变了就得遍历查找一遍数组才能更新相应信息。 <br>
-后来我用对象的结构，优化了聊天室的代码。我使用一个对象gather来管理群组/好友的信息， gather的键为groupId/userId， 值为对应的群/好友的信息，结构如下
+我曾经用对象数组 [ Friends1 , friend2 ] 这样的结构去管理所有的 群/好友 数据，但是当数据量很大的时候，查询和更新 群/好友 数据会变得很消耗性能。每次好友名字变了或者头像变了就得遍历查找一遍数组才能更新相应信息。 <br>
+后来我用对象的结构，优化了聊天室的代码。我使用一个对象 gather 来管理 群/好友 的信息， gather 的键为 groupId/userId ，值为对应的 群/好友 的数据，结构如下
 ```js
 gather = {
  'userId': {
@@ -157,10 +162,10 @@ gather = {
  }
 }
 ```
-每个群和用户都有独一无二的id，所以无需担心重复。使用这样的结构后，更新数据便非常的轻松，只需要拿到需要更新的id，然后直接覆盖gather.id对应的值就行了
+每个群和用户都有独一无二的 id，所以无需担心重复。使用这样的结构后，更新数据便非常的轻松，只需要拿到需要更新的id，然后直接覆盖 gather.id 对应的值就行了
 
 ### vuex
-聊天室涉及到数据的即时更新和各个vue组件的数据同步，处理这样的业务场景是vuex的强项。 我把建立WebSocket连接的函数写在了vuex的action中，在用户登录成功后调起连接函数，下面是精简后的代码。
+聊天室涉及到数据的即时更新和各个 vue 组件的数据同步，处理这样的业务场景是 vuex 的强项。 我把建立 WebSocket 连接的函数写在了 vuex 的 action 中，在用户登录成功后调起连接函数，下面是精简后的代码。
 ```js
 // actions.ts
 const actions: ActionTree<ChatState, RootState> = {
@@ -179,8 +184,8 @@ const actions: ActionTree<ChatState, RootState> = {
     }
   }
 ```
-不得不说vuex-class这个库帮了我很大的忙，它是vuex结合typescript开发的很好的粘合剂。
-使用了vuex-class，那么在vue组件中调用vuex的方法只需要这么写：
+不得不说 vuex-class 这个库帮了我很大的忙，它是 vuex 结合 typescript 开发的很好的粘合剂。
+使用了 vuex-class ，那么在 vue 组件中调用 vuex 的方法只需要这么写：
 ```js
 // GenalChat.vue
 import { namespace } from 'vuex-class'
@@ -191,7 +196,7 @@ export default class GenalChat extends Vue {
 }
 ```
 ### 总结
-&emsp;&emsp;目前聊天室已经完成日常聊天的基础功能，因为聊天室的数据结构基本都大同小异，因此目前的聊天室架构是非常利于在此基础上进行扩展和新增功能的。同时，我今后也会陆续开发很多酷炫的功能，喜欢的朋友给个star鼓励一下我吧！
+&emsp;&emsp;目前聊天室已经完成日常聊天的基础功能，因为聊天室的数据结构基本都大同小异，因此目前的聊天室架构是非常利于在此基础上进行扩展和新增功能的。同时，我今后也会陆续开发很多酷炫的功能，喜欢的朋友给个 star 鼓励一下我吧！
 
 ### 项目地址
 github： [genal-chat](https://github.com/genaller/genal-chat)
