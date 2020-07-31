@@ -116,7 +116,7 @@ export class HttpExceptionFilter implements ExceptionFilter<HttpException> {
 }
 ```
 
-### 前端
+### 前端架构
 #### 页面初始化
 初始化会调起WebSocket连接函数，然后拿到用户所有的群信息GroupArr和所有的好友信息FriendArr，再通过建立WebSocket房间的规则加入到对应的房间，然后使用vuex派发最新的数据。
 #### 数据处理
