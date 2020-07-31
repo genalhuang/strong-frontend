@@ -20,8 +20,8 @@
 - **Vuex**：专为 Vue.js 应用程序开发的状态管理模式。
 - **Nestjs**：是一个用于构建高效、可扩展的 Node.js 服务端应用框架，基于 TypeScript 编写并且结合了 OOP1、FP2、FRP3 的相关理念。
 - **Typeorm**: 支持最新的 JavaScript 特性并提供额外的特性以帮助你开发任何使用数据库的应用程序。
-- **ES6+**：采用ES6+语法，箭头函数、async/await等等语法很好用。
-- **SASS(SCSS)**：用SCSS做CSS预处理语言，可以使用最高效的方式，以少量的代码创建复杂的设计。
+- **ES6+**：采用 ES6+ 语法，箭头函数、async/await 等等语法很好用。
+- **SASS(SCSS)**：用 SCSS 做 CSS 预处理语言，可以使用最高效的方式，以少量的代码创建复杂的设计。
 
 
 ### 数据库表结构设计
@@ -43,19 +43,19 @@
 每个用户进入聊天室都会自动加入名为 public 的 WebSocket 房间和以用户 id 为命名的 WebSocket 房间，那么做是为了方便单独广播事件。如果不了解房间的概念，可以认为只有房间内的人才能接收到房间内的广播，更多信息请移步socket.io官网。
 
 #### 群聊房间的建立
-以 groupId 作为 WebSocket 房间的名字，每次有新用户加入群都会在群房间内广播用户进群事件并附带上新用户的详细信息，然后其他用户会存储新用户的信息。当新用户发消息的时候，可以通过消息的userId找到对应用户的详细信息。这样能保证消息发出后其他用户能够快速知道消息的主人.
+以 groupId 作为 WebSocket 房间的名字，每次有新用户加入群都会在群房间内广播用户进群事件并附带上新用户的详细信息，然后其他用户会存储新用户的信息。当新用户发消息的时候，其他用户收到消息后可以通过消息的userId找到对应用户的详细信息。这样能保证消息发出后其他用户能够快速知道消息的主人.
 
 #### 私聊房间的建立
-每当发起一个添加好友的请求，就会把用户的userId和好友的userId拼接成的字符串作为WebSocket的房间名，从而建立私聊房间。
+每当发起一个添加好友的请求，就会把用户的 userId 和好友的 userId 拼接成的字符串作为 WebSocket 的房间名，从而建立私聊房间。
 
 ### 后端架构
-后端使用了 nestjs 这个近几年发展迅猛的node.js框架。nestjs 的优势有很多， 我只列举出以下几点：
+后端使用了 nestjs 这个近几年发展迅猛的 node.js 框架。nestjs 的优势有很多， 我只列举出以下几点：
 1. 基于 TypeScript 构建，同时兼容普通的 ES6。
 2. nestjs 的依赖注入以及模块化的思想，使得代码结构清晰，便于维护。
 3. nestjs 的 @nestjs/websockets 包封装好了对于 WebSocket 事件的处理，对于开发聊天室有优势。
  
 下面是一些后端的逻辑代码。
-1. 使用nestjs建立WebSocket连接
+1. 使用 nestjs 建立 WebSocket 连接
 ```js
 // chat.gateway.ts
 @WebSocketGateway()
@@ -86,7 +86,7 @@ export function logger(req, res, next) {
 使用全局中间件
 app.use(logger)
 ```
-3. nestjs的静态资源配置
+3. nestjs 的静态资源配置
 ```js
 // main.js
 配置静态资源
@@ -94,7 +94,7 @@ app.useStaticAssets(join(__dirname, '../public/', 'static'), {
   prefix: '/static/', 
 });
 ```
-4. nestjs自定义异常过滤器
+4. nestjs 自定义异常过滤器
 ```js
 // http-exception.filter.ts
 @Catch(HttpException)
