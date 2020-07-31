@@ -14,14 +14,14 @@
 - 消息分页
 
 ### 技术概览
-- Typescript：JavaScript 的一个超集，它最大的优势是提供了类型系统和提高了代码的可读性和可维护性。
-- Vue2.6.x：前端渐进式框架。
-- Socket.io：实现实时通信，websocket第三方库。
-- Vuex：专为 Vue.js 应用程序开发的状态管理模式。
-- Nestjs：是一个用于构建高效、可扩展的 Node.js 服务端应用框架，基于 TypeScript 编写并且结合了 OOP1、FP2、FRP3 的相关理念。
-- Typeorm: 支持最新的 JavaScript 特性并提供额外的特性以帮助你开发任何使用数据库的应用程序。
-- ES6+：采用ES6+语法，箭头函数、async/await等等语法很好用。
-- SASS(SCSS)：用SCSS做CSS预处理语言，可以使用最高效的方式，以少量的代码创建复杂的设计。
+- **Typescript**：JavaScript 的一个超集，它最大的优势是提供了类型系统和提高了代码的可读性和可维护性。
+- **Vue2.6.x**：前端渐进式框架。
+- **Socket/io**：实现实时通信，websocket第三方库。
+- **Vuex**：专为 Vue.js 应用程序开发的状态管理模式。
+- **Nestjs**：是一个用于构建高效、可扩展的 Node.js 服务端应用框架，基于 TypeScript 编写并且结合了 OOP1、FP2、FRP3 的相关理念。
+- **Typeorm**: 支持最新的 JavaScript 特性并提供额外的特性以帮助你开发任何使用数据库的应用程序。
+- **ES6+**：采用ES6+语法，箭头函数、async/await等等语法很好用。
+- **SASS(SCSS)**：用SCSS做CSS预处理语言，可以使用最高效的方式，以少量的代码创建复杂的设计。
 
 
 ### 数据库表结构设计
