@@ -109,7 +109,7 @@ export class HttpExceptionFilter implements ExceptionFilter<HttpException> {
       error,
       message,
     } = exceptionRes;
-    // 以下格式将在发生错误是返回给前端
+    // 以下格式将在请求错误时返回给前端
     response.status(status).json({
       status,
       timestamp: new Date().toISOString(),
