@@ -3,7 +3,7 @@
 😈 项目采用全 typescript 开发，这是为了以后的功能迭代打基础。当然，我本身也是很喜欢 typescript 的。
 
 ### 项目界面
-![](./astro.png)
+![](https://github.com/genaller/genal-chat/blob/master/assets/v6_pc.png)
 
 ### 功能介绍
 - 移动端兼容
@@ -15,6 +15,7 @@
 - 表情包
 - 图片发送/图片预览
 - 在线人数统计
+- 自定义主题
 - 重连提醒
 
 ### 技术概览
