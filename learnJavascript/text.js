@@ -79,30 +79,35 @@ function* generator() {
   return 'success'
 }
 
-function spawn(genF) { //spawn函数就是自动执行器，跟简单版的思路是一样的，多了Promise和容错处理
-  let gen = genF()
-  let result = gen.next().value
-  return new Promise(function(resolve, reject) {
-    const gen = genF();
+function spawn(genF) {
+  return new Promise((resolve, reject) => {
+    let gen = genF()
     function step(nextF) {
-      let next;
+      let next
       try {
-        next = nextF();
-      } catch(e) {
-        return reject(e);
+        next = nextF()
+      } catch (e) {
+        reject(e)
       }
-      if(next.done) {
-        return resolve(next.value);
+      if (next.done) {
+        return resolve(next.value)
       }
-      Promise.resolve(next.value).then(function(v) {
-        step(function() { return gen.next(v); });
-      }, function(e) {
-        step(function() { return gen.throw(e); });
-      });
+      Promise.resolve(next.value).then(v => {
+        step(() => {
+          return gen.next(v)
+        })
+      }, e => {
+        return gen.throw(e)
+      })
     }
-    step(function() { return gen.next(undefined); });
-  });
+    step(() => {
+      return gen.next()
+    })
+  })
 }
 
 // 这样的一个函数 应该再1秒后打印data 再过一秒打印data2 最后打印success
-spawn(generator)
+spawn(generator).then(e => {
+  console.log(e)
+})
+
