@@ -1,48 +1,33 @@
-class QuickUnion {
-  constructor(num) {
-    this.id = []
-    this.count = num;
-    for (let i = 0; i < num; i++) {
-      this.id[i] = i;
+// // 选择排序
+// function SelectSort(arr) {
+//   for (let i = 0; i < arr.length-1; i++) {
+//     let min = i;
+//     for (let j = i + 1; j < arr.length; j++) {
+//       if (arr[j] < arr[min]) {
+//         min = j
+//       }
+//     }
+//     let temp = arr[i]
+//     arr[i] = arr[min]
+//     arr[min] = temp;
+//   }
+//   return arr
+// }
+// console.log(SelectSort([1, 3, 5, 2, 4]))
+
+
+// 插入排序
+function InsertSort(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = i; j > 0; j--) {
+      if (arr[j - 1] && arr[j] < arr[j - 1]) {
+        let temp = arr[j - 1]
+        arr[j - 1] = arr[j]
+        arr[j] = temp;
+      }
     }
   }
-
-  getCount() {
-    return this.count;
-  }
-  
-  find(p) {
-    while(p != this.id[p]) {
-      p = this.id[p]
-    }
-    return p;
-  }
-
-  union(p, q) {
-    let pRoot = this.find(p);
-    let qRoot = this.find(q);
-    if(pRoot == qRoot) return
-
-    this.id[pRoot] = qRoot;
-    this.count--;
-  }
-  
-  conntected(p, q) {
-    return this.find(p) === this.find(q)
-  }
+  return arr;
 }
 
-let un = new QuickUnion(10)
-un.union(4,3)
-un.union(3,8)
-un.union(6,5)
-un.union(9,4)
-un.union(2,1)
-un.union(8,9)
-un.union(5,0)
-un.union(7,2)
-un.union(6,1)
-un.union(1,0)
-un.union(5,9)
-
-console.log(un.id, un.conntected(3,7), un.getCount())
+console.log(InsertSort([5, 4, 3, 2, 1, 99]))
