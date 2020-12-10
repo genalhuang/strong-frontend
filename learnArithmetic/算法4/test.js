@@ -31,3 +31,28 @@ function InsertSort(arr) {
 }
 
 console.log(InsertSort([5, 4, 3, 2, 1, 99]))
+
+
+// 希尔排序
+function XierSort(arr) {
+  let h = 1;
+  while(h < arr.length/3) {
+    h= 3*h + 1;
+  }
+  while(h>=1) {
+    for(let i=h;i<arr.length;i++) {
+      for(let j=i;j>=h;j-=h) {
+        if(arr[j-h] && arr[j-h] > arr[j]) {
+          let temp = arr[j - h]
+          arr[j - h] = arr[j]
+          arr[j] = temp;
+        }
+      }
+    }
+    h = Math.floor(h/3)
+  }
+  return arr
+}
+
+
+console.log(XierSort([5, 4, 3, 2, 1, 99]))
