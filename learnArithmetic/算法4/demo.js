@@ -105,3 +105,5 @@ wun.union(7, 2)
 wun.union(6, 1)
 wun.union(1, 0)
 console.log(wun.id)
+
+
