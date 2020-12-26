@@ -407,11 +407,11 @@ class RedBlackBST {
 // bst.root = bst.put(bst.root, 'P', 9)
 // bst.root = bst.put(bst.root, 'L', 9)
 
-let root = new Node('C', 1, 1, RED);
-let bst = new RedBlackBST(root);
-bst.root = bst.put(bst.root, 'B', 1)
-bst.root = bst.put(bst.root, 'A', 2)
-bst.root = bst.put(bst.root, 'D', 2)
+// let root = new Node('C', 1, 1, RED);
+// let bst = new RedBlackBST(root);
+// bst.root = bst.put(bst.root, 'B', 1)
+// bst.root = bst.put(bst.root, 'A', 2)
+// bst.root = bst.put(bst.root, 'D', 2)
 // bst.root = bst.put(bst.root, 'R', 3)
 // bst.root = bst.put(bst.root, 'C', 4)
 // bst.root = bst.put(bst.root, 'H', 5)
@@ -419,5 +419,23 @@ bst.root = bst.put(bst.root, 'D', 2)
 // bst.root = bst.put(bst.root, 'M', 9)
 // bst.root = bst.put(bst.root, 'P', 9)
 // bst.root = bst.put(bst.root, 'L', 9)
-bst.centerPrint(bst.root)
-console.log(bst.root)
+// bst.centerPrint(bst.root)
+// console.log(bst.root)
+
+
+class Graph {
+  constructor(V) {
+    this.V = V;
+    this.E = 0;
+    this.adj = [];
+    for(var i=0;i< this.v;i++) {
+      this.adj[i] = [];
+    }
+  }
+
+  addEdge(v, w) {
+    this.adj[v].add(w)
+    this.adj[w].add(v)
+    this.E++;
+  }
+}
