@@ -24,3 +24,22 @@ yarn add --dev babel-jest @babel/core @babel/preset-env
   ]
 }
 ```
+- 如果需要在jest单元测试中使用async/await，需要在babel文件中加一行
+```
+{
+  "plugins": ["@babel/plugin-transform-runtime"]
+}
+```
+
+### 钩子函数
+在运行测试用例之前、后需要对数据进行初始化时使用
+afterAll(fn, timeout) 整个用例文件开始前
+afterEach(fn, timeout) 每个用例开始前
+beforeAll(fn, timeout)
+beforeEach(fn, timeout)
+- 遇到异步测试用例也会异步等待
+
+### 分组
+describe()
+同类型的测试用例，比如某个类的加法类测试，减法类测试
+- describe中可写钩子函数，对其子describe也生效,对同级describe不生效
