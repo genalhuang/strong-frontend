@@ -43,3 +43,9 @@ beforeEach(fn, timeout)
 describe()
 同类型的测试用例，比如某个类的加法类测试，减法类测试
 - describe中可写钩子函数，对其子describe也生效,对同级describe不生效
+
+### mock
+作用：
+1. 捕获函数调用和返回结果，以及this和调用顺序
+2. 可以自由设置返回结果
+3. 改变函数内部实现
