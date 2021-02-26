@@ -55,7 +55,6 @@ describe('内鬼',() => {
     counter = new Counter();
   })
   test('测试Counter中的minusT2o',() => {
-    console.log(counter)
     counter.minusTwo()
     expect(counter.number).toBe(-2)
   })
