@@ -78,3 +78,8 @@ test('fetchData测试',() => {
 const {xxx} = jest.requireActual('./mock)
 ```
 3. automock: true 配置
+
+### vue中配置jest
+#### @vue/test-utils
+- shallowMount 浅渲染，只渲染当前组件，不渲染子组件
+- mount 深渲染
