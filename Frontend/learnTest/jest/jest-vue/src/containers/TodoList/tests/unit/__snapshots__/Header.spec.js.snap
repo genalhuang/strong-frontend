@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header 样式改变做提示 1`] = `<div class="header"><input data-test="input"></div>`;
