@@ -83,3 +83,7 @@ const {xxx} = jest.requireActual('./mock)
 #### @vue/test-utils
 - shallowMount 浅渲染，只渲染当前组件，不渲染子组件
 - mount 深渲染
+
+### react中配置jest
+#### enzyme 
+#### jest-enzyme
