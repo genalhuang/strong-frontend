@@ -33,7 +33,7 @@ Parallel和Series的概念只存在于异步的hook中，因为同步hook全部�
 
 更详细的使用看[tapable使用](https://zhuanlan.zhihu.com/p/100974318)
 [tapable详解](https://www.cnblogs.com/dennisj/p/14538668.html)
-
+![1234](./assets/tapable.jpg)
 ### 在webpack中的使用
 - 举例 `webpack`的 compiler类的定义
 ```js
