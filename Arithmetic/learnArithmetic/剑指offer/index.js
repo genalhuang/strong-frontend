@@ -17,7 +17,7 @@ function getRepeatNumber(arr) {
 }
 // console.log(getRepeatNumber([2,3,1,0,2,5,3]))
 
-
+// 修改数组找出重复的数字
 function getRepeatNumber(arr) {
   if (arr.length <= 1) {
     return false;
@@ -76,7 +76,7 @@ function getRepeatNumberNotEdit(arr) {
 
 /**
  * 
- * 二维数组中的查找
+ * 右下角递增的二维数组中的查找是否有某个值
  */
 function getArr2HasNum(arr, num) {
   if (!arr.length) {
@@ -174,7 +174,6 @@ let listNode = {
  */
 
 function rebuildBinaryTree(prev, center) {
-  console.log(prev,center)
   if(prev.length <= 1) {
     return {
       value: prev[0],
@@ -210,6 +209,61 @@ function rebuildBinaryTree(prev, center) {
   return rootTree;
 }
 
-console.log(JSON.stringify(rebuildBinaryTree([1,2,4,7,3,5,6,8],[4,7,2,1,5,3,8,6])))
+// console.log(JSON.stringify(rebuildBinaryTree([1,2,4,7,3,5,6,8],[4,7,2,1,5,3,8,6])))
+// console.log(JSON.stringify(rebuildBinaryTree([1],[1])))
 
+/**
+ * 用两个栈实现一个队列 同理思考两个队列实现栈
+ */
+class Stack2ToQuene {
+  stack1 = [];
+  stack2 = [];
+  constructor(arr) {
+    this.stack1 = arr;
+  }
 
+  out() {
+    if(!this.stack2.length && this.stack1.length) {
+      while(this.stack1.length) {
+        let a = this.stack1.pop()
+        this.stack2.push(a)
+      }
+      return this.stack2.pop()
+    } else if(!this.stack2.length && !this.stack1.length){
+      console.log('队空')
+    } else {
+      return this.stack2.pop()
+    }
+  }
+
+  in(num) {
+    this.stack1.push(num)
+  }
+}
+
+// let quene = new Stack2ToQuene([1,2,3,4])
+// console.log(quene.out())
+// console.log(quene.out())
+// quene.in(5)
+// console.log(quene.out())
+// console.log(quene.out())
+// console.log(quene.out())
+// console.log(quene.out())
+
+/**
+ * 斐波那契第n项
+ */
+let a = {}
+function feibonaqiN(n) {
+  if(n<=2) {
+    return n;
+  }
+  if(a[n]) {
+    return a[n]
+  }
+  a[n-1] = feibonaqiN(n-1)
+  a[n-2] = feibonaqiN(n-2)
+  return a[n-1] + a[n-2]
+}
+
+console.log(feibonaqiN(50))
