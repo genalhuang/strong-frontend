@@ -17,7 +17,7 @@ var verifyPostorder = function (arr) {
     if (arr[i] !== root) {
       left.push(arr[i])
     }
-    i++
+    i++;
   }
 
   while (i < arr.length) {
