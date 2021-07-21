@@ -59,8 +59,8 @@ function treeToList(head) {
   }
   dfs(tree)
   head.left = pre
-  pre.right = cur;
-  return cur
+  pre.right = head;
+  return head
 }
 
 //  let tree = {
