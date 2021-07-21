@@ -34,7 +34,7 @@
 
 
 let map = {}
-var myPow = function(base, fang) {
+var myPow = function (base, fang) {
   if (base < 0) {
     return new Error('不要输入负数基数')
   }
@@ -52,7 +52,7 @@ var myPow = function(base, fang) {
   if (map[absFang]) {
     return map[absFang]
   }
-  map[absFang] = myPow(base, Math.floor(absFang / 2))* myPow(base, Math.ceil(absFang / 2))
+  map[absFang] = myPow(base, Math.floor(absFang / 2)) * myPow(base, Math.ceil(absFang / 2))
   if (fang < 0) {
     return 1 / map[absFang];
   } else {

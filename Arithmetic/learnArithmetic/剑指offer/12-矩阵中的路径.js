@@ -1,7 +1,7 @@
 /**
  * 矩阵中的路径，矩阵是否包含某个字符串所有字符的路径
  */
- function strInJuzhen(arr, str) {
+function strInJuzhen(arr, str) {
   if (arr.length && !str.length) {
     return false;
   }

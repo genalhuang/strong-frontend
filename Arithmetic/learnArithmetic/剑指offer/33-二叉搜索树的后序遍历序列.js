@@ -33,3 +33,9 @@ var verifyPostorder = function (arr) {
 };
 console.log(verifyPostorder([1, 2, 5, 10, 6, 9, 4, 3]))
 console.log(verifyPostorder([7, 4, 6, 5]))
+
+
+/**
+ * 简单来说就是要发现二叉搜索树的规律，arr最后一个节点就是根节点，从arr0开始直到找到最后一个
+ * 小于根节点的节点后，如果在大于根节点的一边找到了一个小于根节点的节点，那么就不构成二叉搜索树
+ */

@@ -2,7 +2,7 @@
  * 
  * 机器人的运动范围
  */
- function isExeed(k, start, end) {
+function isExeed(k, start, end) {
   let sum = 0;
   (start + '').split('').concat((end + '').split('')).map(item => {
     sum += parseInt(item);

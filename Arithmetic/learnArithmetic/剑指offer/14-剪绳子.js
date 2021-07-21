@@ -40,16 +40,16 @@ function cutLine(n) {
  */
 
 function cutLine(n) {
-  if(n<2) {
+  if (n < 2) {
     return 0;
   }
-  if(n==2) {
+  if (n == 2) {
     return 1;
   }
-  if(n===3) {
+  if (n === 3) {
     return 2;
   }
-  let map = [0,1,2,3]
+  let map = [0, 1, 2, 3]
   for (var i = 4; i <= n; i++) {
     let max = 0;
     for (var j = 1; j <= i / 2; j++) {
@@ -73,22 +73,22 @@ console.log(cutLine(8))
  * 思考长8 和长7你就懂了
  */
 function cutLine(n) {
-  if(n<2) {
+  if (n < 2) {
     return 0;
   }
-  if(n==2) {
+  if (n == 2) {
     return 1;
   }
-  if(n===3) {
+  if (n === 3) {
     return 2;
   }
-  let yu = n%3;
-  if(yu === 2) {
-    return 3**Math.floor(n/3)*2
-  } else if(yu === 1) {
-    return 3**(Math.floor(n/3)-1)*4
+  let yu = n % 3;
+  if (yu === 2) {
+    return 3 ** Math.floor(n / 3) * 2
+  } else if (yu === 1) {
+    return 3 ** (Math.floor(n / 3) - 1) * 4
   } else {
-    return 3**Math.floor(n/3)
+    return 3 ** Math.floor(n / 3)
   }
 }
 console.log(cutLine(6))

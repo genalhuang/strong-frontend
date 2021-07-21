@@ -1,7 +1,7 @@
 /**
  * 反向输出链表
  */
- function reverseListNode(listNode) {
+function reverseListNode(listNode) {
   if (listNode === null) {
     return [];
   }

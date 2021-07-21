@@ -2,7 +2,7 @@
  * 两数组迁移
  */
 
- function remveArr(arr1, arr2) {
+function remveArr(arr1, arr2) {
   if (!arr2.length) {
     return arr1;
   }

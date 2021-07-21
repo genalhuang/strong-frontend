@@ -1,7 +1,7 @@
 /**
  * 用两个栈实现一个队列 同理思考两个队列实现栈
  */
- class Stack2ToQuene {
+class Stack2ToQuene {
   stack1 = [];
   stack2 = [];
   constructor(arr) {

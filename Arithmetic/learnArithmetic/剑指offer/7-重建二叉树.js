@@ -5,7 +5,7 @@
  * 拿到前序遍历序列和中序遍历序列的结果，重建该二叉树
  */
 
- function rebuildBinaryTree(prev, center) {
+function rebuildBinaryTree(prev, center) {
   if (prev.length <= 1) {
     return {
       value: prev[0],

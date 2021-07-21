@@ -2,7 +2,7 @@
 /**
  * 旋转数组的最小数字--e二分法
  */
- function reverseArrMin(arr) {
+function reverseArrMin(arr) {
   if (arr.length <= 2) {
     if (arr[1]) {
       return arr[1] > arr[0] ? arr[0] : arr[1]
