@@ -3,7 +3,7 @@
  * dp[i] = dp[i-1]是否包含arr[i] ? 包含则dp[i] = 从上一个arr[i]到arr[i]的距离 : 否则dp[i] = dp[i-1] + 1;
  * dp[i]表示以第i个字符为结尾的不包含重复字符串的最长长度
  */
-function getSingleStr(str) {
+ function getSingleStr(str) {
   if (!str) {
     return 0
   }
