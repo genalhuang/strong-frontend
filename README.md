@@ -5,16 +5,16 @@
 ### 数据结构与算法
 - [数据结构](Arithmetic\learnArithmetic\数据结构)
 - [算法](Arithmetic\learnArithmetic\算法)
-- [算法第四版书籍笔记](Arithmetic\learnArithmetic\算法4)
+- [算法第四版书籍笔记和课后练习](Arithmetic\learnArithmetic\算法4)
 - [剑指offer题目和答案汇总](Arithmetic\learnArithmetic\剑指offer)
-- [leecode练习笔记](Arithmetic\learnArithmetic\leecode练习)
+- [leecode刷题记录](Arithmetic\learnArithmetic\leecode练习)
 
 ### 计算机网络
-其中大量内容选自《web性能权威指南》、《TCP/IP详解卷1：协议》
+其中大量内容选自《web性能权威指南》、《TCP/IP详解卷1：协议》、《HTTP权威指南》
 - [网络分层](ComputerNetwork\计算机网络.md)
 - 应用层
   - [http](ComputerNetwork\http.md)
-  - [http缓存](ComputerNetwork\web缓存.xmind)
+  - [http缓存思维导图总结](ComputerNetwork\web缓存.xmind)
   - [https](ComputerNetwork\https.md)
   - [tls](ComputerNetwork\tls.md)
   - [websocket](ComputerNetwork\websocket.md)
