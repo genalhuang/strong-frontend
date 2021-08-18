@@ -1,5 +1,5 @@
 ## hhz的blog
-前端->大前端->全栈
+前端 $\Longrightarrow$ 大前端 $\Longrightarrow$ 全栈
 
 以下是本人本人学习成长路上**精选笔记和总结**展示
 ### 数据结构与算法
