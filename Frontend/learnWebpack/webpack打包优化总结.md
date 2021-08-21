@@ -158,6 +158,9 @@ configureWebpack: (config) => {
 > 9. 各种库的按需引入
 > 10. 首屏加载太久时使用`loading`效果
 > 11. why not use `promise.all`? `promise.all`可以并发多个没有关联的数据请求(如获取多个用户的头像),提高资源加载速度,充分发挥`js`异步的特性.
+> 12. tree shanking
+> 13. 升级http2.0
+> 14. 图片懒加载
 
 ## 优化前后文件对比
 优化前
