@@ -10,10 +10,10 @@ import {reactive, ref, isRef} from 'vue';
  * 1. 在组合api中定义的变量/方法，要想在外界使用必须通过return {xxx, xxx}暴露出去
  * 2. ref只能监听简单类型的变化
  * 3. setUp函数
- *    3.1 执行时机：beforeCreate setUp created
+ *    3.1 执行时机：setUp beforeCreate  created
  *    由于在执行setUp函数的时候，还没有执行created生命周期方法，所有在setUp函数中是无法使用data和methods； 
  *    3.2 vue为了避免错误使用，直接将setup函数中的this修改成了undefined
- *    3.3 setUp函数只能是同步不能是异步
+ *    3.3 非Suspense包着的的setUp函数只能是同步不能是异步
  * 4. reative函数
  *    4.1 reative参数必须是对象、数组
  *    4.2 如果传递了其他对象默认情况下不会自动更新，如果想更新，可以通过重新赋值的方式；
