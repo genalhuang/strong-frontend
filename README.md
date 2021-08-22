@@ -14,7 +14,7 @@
 - [网络分层](https://github.com/genaller/strong-frontend/tree/master/ComputerNetwork/计算机网络.md)
 - 应用层
   - [http](https://github.com/genaller/strong-frontend/tree/master/ComputerNetwork/http.md)
-  - [http缓存思维导图总结](https://github.com/genaller/strong-frontend/tree/master/ComputerNetwork/浏览器缓存/http_cache.png)
+  - [http缓存思维导图总结](https://github.com/genaller/strong-frontend/tree/master/ComputerNetwork/浏览器/浏览器缓存/http_cache.png)
   - [https](https://github.com/genaller/strong-frontend/tree/master/ComputerNetwork/https.md)
   - [tls](https://github.com/genaller/strong-frontend/tree/master/ComputerNetwork/tls.md)
   - [websocket](https://github.com/genaller/strong-frontend/tree/master/ComputerNetwork/websocket.md)
@@ -40,6 +40,10 @@
 - [前端测试](https://github.com/genaller/strong-frontend/tree/master/Frontend/learnTest)
 - [Rxjs](https://github.com/genaller/strong-frontend/tree/master/Frontend/learnRxjs/rxjs.md)
 - [js手写类面试题](https://github.com/genaller/strong-frontend/tree/master/Frontend/learnJavascript/手写代码.md)
+
+### 浏览器
+- [浏览器渲染原理](https://github.com/genaller/strong-frontend/blob/master/ComputerNetwork/%E6%B5%8F%E8%A7%88%E5%99%A8/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93%E5%8E%9F%E7%90%86.md)
+- [v8 垃圾回收](https://github.com/genaller/strong-frontend/blob/master/ComputerNetwork/%E6%B5%8F%E8%A7%88%E5%99%A8/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/v8%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6.md)
 
 ### 图形学
 - [D3.js学习笔记和demo](https://github.com/genaller/strong-frontend/tree/master/GraphVisualization/learnD3/d3.md)
