@@ -1,0 +1,21 @@
+{
+  "name": "webpack-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "webpack": "webpack ./src/b.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/core": "^7.15.0",
+    "babel-loader": "^8.2.2",
+    "webpack": "^5.51.1"
+  },
+  "devDependencies": {
+    "webpack-cli": "^4.8.0"
+  }
+}
