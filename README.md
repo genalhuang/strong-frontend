@@ -14,7 +14,7 @@
 - [网络分层](https://github.com/genaller/strong-frontend/tree/master/ComputerNetwork/计算机网络.md)
 - 应用层
   - [http](https://github.com/genaller/strong-frontend/tree/master/ComputerNetwork/http.md)
-  - [http缓存思维导图总结](https://github.com/genaller/strong-frontend/tree/master/ComputerNetwork/http_cache.png)
+  - [http缓存思维导图总结](https://github.com/genaller/strong-frontend/tree/master/ComputerNetwork/浏览器缓存/http_cache.png)
   - [https](https://github.com/genaller/strong-frontend/tree/master/ComputerNetwork/https.md)
   - [tls](https://github.com/genaller/strong-frontend/tree/master/ComputerNetwork/tls.md)
   - [websocket](https://github.com/genaller/strong-frontend/tree/master/ComputerNetwork/websocket.md)
