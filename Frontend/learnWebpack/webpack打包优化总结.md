@@ -161,6 +161,7 @@ configureWebpack: (config) => {
 > 12. tree shanking
 > 13. 升级http2.0
 > 14. 图片懒加载
+> 15. 压缩js文件（webpack-parallel-uglify-plugin）
 
 ## 优化前后文件对比
 优化前
