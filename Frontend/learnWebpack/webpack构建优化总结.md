@@ -7,3 +7,6 @@
 2. 优化使用体验
    1. 热更新HMR
    2. 模块热替换
+   3. 使用 parallel-uglify-plugin 插件 多进程压缩
+   4. 使用 polyfill 动态服务
+      动态 polyfill 指的是根据不同的浏览器，动态载入需要的 polyfill。 Polyfill.io 通过尝试使用 polyfill 重新创建缺少的功能，可以更轻松地支持不同的浏览器，并且可以大幅度的减少构建体积。
