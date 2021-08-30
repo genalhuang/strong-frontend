@@ -162,6 +162,9 @@ configureWebpack: (config) => {
 > 13. 升级http2.0
 > 14. 图片懒加载
 > 15. 压缩js文件（webpack-parallel-uglify-plugin）
+> 16. web worker 、 时间切片做大量计算
+> 17. css相关（不用@import， 动画使用will-change,contain，transform等硬件加速，动画流畅使用requestanimationframe）
+
 
 ## 优化前后文件对比
 优化前
